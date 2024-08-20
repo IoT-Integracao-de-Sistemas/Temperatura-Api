@@ -19,26 +19,10 @@ public class TemperaturaRecurso {
 
     @GetMapping
     public ResponseEntity obterTemperaturas(){
-
-        Temperatura t1 = new Temperatura();
-        t1.temperatura = 33.5;
-        t1.timestamp = LocalDateTime.now();
-        t1.sensor = "S555";
-
-        Temperatura t2 = new Temperatura();
-        t2.temperatura = 35.8;
-        t2.timestamp = LocalDateTime.now();
-        t2.sensor = "S555";
-
-        Temperatura t3 = new Temperatura();
-        t3.temperatura = 38.8;
-        t3.timestamp = LocalDateTime.now();
-        t3.sensor = "S555";
-
-        List<Temperatura> temperaturas = Arrays.asList(t1, t2, t3);
+        
+        List<Temperatura> temperaturas = repositorio.findAll();
 
         return ResponseEntity.ok().body(temperaturas);
-
     }
 
     @PostMapping
